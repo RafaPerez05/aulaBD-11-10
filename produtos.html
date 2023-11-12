@@ -31,11 +31,8 @@
                             Funções Básicas
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
+                            <li><a class="dropdown-item" href="cliente.html">Clientes</a></li>
                             <li><a class="dropdown-item" href="Fornecedor.html">Fornecedor</a></li>
-
-                            <li><a class="dropdown-item" href="#">Funcionários</a></li>
-
                             <li><a class="dropdown-item" href="produtos.html">Produtos</a></li>
 
                         </ul>
@@ -187,8 +184,10 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                            <p>Estoque Maximo: <a style="color: blue;font-weight: bold;" id="consultar-estoqueMa"> </a></p>
-                            <p>Estoque Minimo: <a style="color: blue; font-weight: bold;" id="consultar-estoqueMi"> </a></p>
+                            <p>Estoque Maximo: <a style="color: blue;font-weight: bold;" id="consultar-estoqueMa"> </a>
+                            </p>
+                            <p>Estoque Minimo: <a style="color: blue; font-weight: bold;" id="consultar-estoqueMi"> </a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -206,26 +205,77 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <input type="hidden" value="" id="alterar-id" />
                     <div class="row">
                         <div class="col">
-                            <label for="inserir-nome" class="form-label">Informe o nome do cliente:</label>
-                            <input type="text" id="inserir-nome" class="form-control" />
+                            <label for="alterar-nome" class="form-label">Informe o nome do produto:</label>
+                            <input type="text" id="alterar-nome" class="form-control" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="inserir-email" class="form-label">Informe o email do cliente:</label>
-                            <input type="text" id="inserir-email" class="form-control" />
+                            <label for="alterar-descricao" class="form-label">Informe a descricao do produto:</label>
+                            <input type="text" id="alterar-descricao" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="alterar-valor" class="form-label">Informe o valor do produto:</label>
+                            <input type="text" id="alterar-valor" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="alterar-estoqueMax" class="form-label">Informe o estoque Maximo:</label>
+                            <input type="text" id="alterar-estoqueMax" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="alterar-estoqueMin" class="form-label">Informe o estoque Minimo:</label>
+                            <input type="text" id="alterar-estoqueMin" class="form-control" />
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Salvar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        id="btnAlterarProduto">Salvar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastAlterarSucesso" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <span class="material-symbols-outlined">
+                    check_circle
+                </span>
+                <strong class="me-auto">Resposta</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p>Registro alterado com sucesso!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastAlterarErro" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <span class="material-symbols-outlined">
+                    error
+                </span>
+                <strong class="me-auto">Resposta</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p>Erro ao alterar o registro!</p>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="excluirModal" tabindex="-1" aria-labelledby="excluirModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -234,16 +284,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <input type="hidden" value="" id="excluir-id" />
                     <div class="row">
                         <div class="col">
-                            <p>Nome do cliente:</p>
-                            <p id="consultar-nome"></p>
+                            <p>Nome do produto:</p>
+                            <p id="excluir-nome"></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <p>Email do cliente:</p>
-                            <p id="consultar-descricao"></p>
+                            <p>Descricao do produto:</p>
+                            <p id="excluir-descricao"></p>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end">
@@ -251,24 +302,54 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Sim</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        id="btnExcluirProduto">Sim</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastExcluirSucesso" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <span class="material-symbols-outlined">
+                    check_circle
+                </span>
+                <strong class="me-auto">Resposta</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p>Registro excluído com sucesso!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastExcluirErro" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <span class="material-symbols-outlined">
+                    error
+                </span>
+                <strong class="me-auto">Resposta</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p>Erro ao excluir o registro!</p>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        let table = new DataTable('#tabela');
-    </script>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-        import { getFirestore, addDoc, collection, query, where, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+        import { getFirestore, addDoc, collection, query, where, getDocs, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
         const firebaseConfig = {
             apiKey: "AIzaSyBZK4Ax7wz_9kR7KTfaSLTJnAv-yGLAB8o",
             authDomain: "app-rafael-js.firebaseapp.com",
@@ -280,7 +361,9 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-        async function btnInserirProduto() {
+
+
+        async function InserirProduto() {
             let nome = document.querySelector("#inserir-nome").value;
             let descricao = document.querySelector("#inserir-descricao").value;
             let valor = document.querySelector("#inserir-valor").value;
@@ -297,6 +380,9 @@
                 });
                 const toast = new bootstrap.Toast(document.querySelector("#toastInserirSucesso"));
                 toast.show();
+                table.rows().remove().draw();
+                table.destroy();
+                carregarDados();
             } catch (e) {
                 const toast = new bootstrap.Toast(document.querySelector("#toastInserirErro"));
                 toast.show();
@@ -310,7 +396,54 @@
 
         }
 
+        async function alterarProdutoBD() {
+            let id = document.getElementById("alterar-id").value;
+            let valor_nome = document.getElementById("alterar-nome").value;
+            let valor_descricao = document.getElementById("alterar-descricao").value;
+            let valor_valor = document.getElementById("alterar-valor").value;
+            let valor_estoqueMax = document.getElementById("alterar-estoqueMax").valor;
+            let valor_estoqueMin = document.getElementById("alterar-estoqueMin").valor;
+            try {
+                let produto = doc(db, "Produto", id);
+                await updateDoc(produto, {
+                    valor_nome: nome,
+                    valor_descricao: descricao,
+                    valor_valor: valor,
+                    valor_estoqueMa: estoqueMa,
+                    valor_estoqueMi: estoqueMi,
+                });
+                const toast = new bootstrap.Toast(document.getElementById("toastAlterarSucesso"));
+                toast.show();
+                table.rows().remove().draw();
+                table.destroy();
+                carregarDados();
+            } catch (e) {
+                const toast = new bootstrap.Toast(document.getElementById("toastAlterarErro"));
+                toast.show();
+            }
+        }
+
+        async function excluirProdutoBD() {
+            let id = document.getElementById("excluir-id").value;
+            try {
+                await deleteDoc(doc(db, "Produto", id));
+                const toast = new bootstrap.Toast(document.getElementById("toastExcluirSucesso"));
+                toast.show();
+                table.rows().remove().draw();
+                table.destroy();
+                carregarDados();
+            } catch (e) {
+                const toast = new bootstrap.Toast(document.getElementById("toastExcluirErro"));
+                toast.show();
+            }
+        }
+
         async function carregarDados() {
+            table = new DataTable('#tabela', {
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json',
+                },
+            });
             const q = query(collection(db, "Produto"));
             const resultado = await getDocs(q);
             resultado.forEach(
@@ -334,27 +467,59 @@
 
                     ]).draw(false);
                     table.column(0)
-                    .data()
-                    .sort();
+                        .data()
+                        .sort();
                 });
-                const btnsConsultar = Array.from(document.getElementsByClassName("btn-outline-info"));
-                btnsConsultar.forEach( btn => {
-                    btn.addEventListener('click',consultarProduto);
-                });
-            }
-            async function consultarProduto(){
-                const id=this.value;
-                const consulta = doc(db, "Produto", id);
-                const resultado = await getDoc(consulta);
-                if(resultado.exists()){
-                    document.getElementById("consultar-estoqueMa").innerHTML = resultado.data().estoqueMa;
-                    document.getElementById("consultar-estoqueMi").innerHTML = resultado.data().estoqueMi;
-                }
-            }
+            const btnConsultar = Array.from(document.getElementsByClassName('btn-outline-info'));
+            btnConsultar.forEach(btn => { btn.addEventListener('click', consultarProduto) });
 
-            
+            const btnAlterar = Array.from(document.getElementsByClassName('btn-outline-warning'));
+            btnAlterar.forEach(btn => { btn.addEventListener('click', alterarProduto) });
 
-        document.querySelector("#btnInserirProduto").addEventListener("click", btnInserirProduto);
+            const btnExcluir = Array.from(document.getElementsByClassName('btn-outline-danger'));
+            btnExcluir.forEach(btn => { btn.addEventListener('click', excluirProduto) });
+        }
+        async function consultarProduto() {
+            const id = this.value;
+            const consulta = doc(db, "Produto", id);
+            const resultado = await getDoc(consulta);
+            if (resultado.exists()) {
+                document.getElementById("consultar-estoqueMa").innerHTML = resultado.data().estoqueMa;
+                document.getElementById("consultar-estoqueMi").innerHTML = resultado.data().estoqueMi;
+            }
+        }
+        async function alterarProduto() {
+            let id = this.value;
+            const consulta = doc(db, "Produto", id);
+            const resultado = await getDoc(consulta);
+            if (resultado.exists()) {
+                document.getElementById("alterar-id").value = id;
+                document.getElementById("alterar-nome").value = resultado.data().nome;
+                document.getElementById("alterar-valor").value = resultado.data().valor;
+                document.getElementById("alterar-descricao").value = resultado.data().descricao;
+                document.getElementById("alterar-estoqueMax").value = resultado.data().estoqueMa;
+                document.getElementById("alterar-estoqueMin").value = resultado.data().estoqueMi;
+            }
+        }
+
+        async function excluirProduto() {
+            let id = this.value;
+            const consulta = doc(db, "Produto", id);
+            const resultado = await getDoc(consulta);
+            if (resultado.exists()) {
+                document.getElementById("excluir-id").value = id;
+                document.getElementById("excluir-nome").innerHTML = resultado.data().nome;
+                document.getElementById("excluir-valor").innerHTML = resultado.data().valor;
+                document.getElementById("excluir-descricao").innerHTML = resultado.data().descricao;
+                document.getElementById("excluir-estoqueMax").innerHTML = resultado.data().estoqueMa;
+                document.getElementById("excluir-estoqueMin").innerHTML = resultado.data().estoqueMi;
+            }
+        }
+
+        var table;
+        document.querySelector("#btnInserirProduto").addEventListener("click", InserirProduto);
+        document.querySelector("#btnAlterarProduto").addEventListener("click", alterarProdutoBD);
+        document.querySelector("#btnExcluirProduto").addEventListener("click", excluirProdutoBD);
         document.addEventListener("DOMContentLoaded", function (e) {
             carregarDados();
         });
