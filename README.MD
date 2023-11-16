@@ -1,20 +1,29 @@
-# Projeto GitHub: Conexão API com Firebase 🚀
+# Firebase CRUD com Javascript 🚀
 
-Este projeto é uma demonstração de como usar a API do Firebase para conectar-se a um banco de dados não relacional e realizar operações CRUD (Create, Read, Update, Delete) em dados.
+Este é um projeto didático de CRUD (Create, Read, Update, Delete) utilizando o Firebase e JavaScript para gerenciar clientes. O sistema inclui funcionalidades básicas como inserir, consultar, alterar e excluir registros de clientes.
 
-## Requisitos
+## Pré-requisitos
 
-- Node.js
-- NPM
-- Firebase CLI
-- Uma conta no Firebase
+Certifique-se de ter uma conta no [Firebase](https://firebase.google.com/) e crie um projeto para obter as credenciais necessárias.
 
-## Configuração
+## Configuração do Firebase
 
-1. Clone este repositório para a sua máquina local.
-2. Navegue até a pasta do projeto e execute `npm install` para instalar as dependências.
-3. Crie um projeto no Firebase e habilite o banco de dados Firestore.
-4. Execute `firebase login` para fazer login na sua conta do Firebase e `firebase init` para inicializar o projeto.
-5. Escolha as opções de hospedagem e funções do Firebase e siga as instruções na tela.
-6. Copie o arquivo `.env.example` para `.env` e preencha as variáveis de ambiente com as suas credenciais do Firebase.
-7. Execute `firebase deploy` para implantar o projeto no Firebase.
+Substitua as credenciais do Firebase no bloco de código abaixo com as informações do seu projeto:
+
+```javascript
+const firebaseConfig = {
+    apiKey: "SuaAPIKey",
+    authDomain: "SeuDominio.firebaseapp.com",
+    projectId: "SeuProjetoID",
+    storageBucket: "SeuProjeto.appspot.com",
+    messagingSenderId: "SeuID",
+    appId: "SeuAppID"
+};
+
+// Inicializa o Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+```
+
+##Estrutura do Projeto
+O projeto é estruturado em páginas HTML separadas para fornecedor (Fornecedor.html), produtos (produtos.html), e clientes (index.html). Cada página contém uma tabela para exibir os registros e modais para interações como inserção, consulta, alteração e exclusão.
