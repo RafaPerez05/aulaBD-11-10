@@ -25,5 +25,5 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 ```
 
-##Estrutura do Projeto
+## Estrutura do Projeto
 O projeto é estruturado em páginas HTML separadas para fornecedor (Fornecedor.html), produtos (produtos.html), e clientes (index.html). Cada página contém uma tabela para exibir os registros e modais para interações como inserção, consulta, alteração e exclusão.
