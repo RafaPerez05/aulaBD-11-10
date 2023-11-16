@@ -40,6 +40,8 @@ O projeto é estruturado em páginas HTML separadas para fornecedor (Fornecedor.
 
 ## Demonstração 🎥
 
+<video width="320" height="240" controls> <source src="video.mov" type="video/mp4"> </video>
+
 
 
 Observação: Este projeto é voltado para fins educacionais, e a segurança não foi a principal preocupação. Em um ambiente de produção, medidas adicionais de segurança devem ser implementadas.
