@@ -38,9 +38,12 @@ O projeto é estruturado em páginas HTML separadas para fornecedor (Fornecedor.
 - Abra os arquivos HTML em um navegador da web.
 - Lembre-se de adaptar o código conforme necessário para atender aos requisitos específicos do seu projeto didático.
 
-## Demonstração 🎥
-
-![Assista ao Vídeo](demostra.mp4)
+## Tecnologias
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
+![Vercel](https://img.shields.io/badge/bootstrap-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
 
 
